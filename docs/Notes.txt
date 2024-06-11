@@ -1,0 +1,10 @@
+Tutorial:
+https://www.unknowncheats.me/wiki/C%2B%2B:Make_Your_Own_DLL_Hack_-_Memory_Patching_And_Editing
+https://www.cheatengine.org/forum/viewtopic.php?t=604102&sid=2e04a42185b368dfb09c1acb45da169c
+https://gamehacking.academy/pages/3/03/
+https://gamemodding.com/en/gta-san-andreas/news-and-articles/62736-pishem-prostoy-asi-plagin.html
+https://stackoverflow.com/questions/53788792/finding-and-replacing-pattern-in-memory
+
+OpenSSL/wolfSSL:
+https://stackoverflow.com/questions/32156336/how-to-include-openssl-in-visual-studio
+https://techoverflow.net/?s=sha256
