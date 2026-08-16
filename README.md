@@ -1,9 +1,8 @@
 # BL2ProcessPatcher
 
-An ASI plugin for *Borderlands 2* used to patch various things at game launch, such as disabling checksum verification performed on generic packages (Startup.upk, Willowgame.upk) or simply re-enabing the in-game console command.
-Using this, you can for example bypass the executable protection of the *Assault on Dragon Keep* standalone on Steam to grants yourself developer perks by editing the WillowGame.upk package.
+An ASI plugin for *Borderlands 2* used to patch various things at game launch, such as disabling checksum verification performed on generic packages (e.g. ```Startup.upk```, ```Willowgame.upk```), recalculating DLCs hashes or simply enabing the in-game console commands.
 
-Compatible games:
+#### Compatible games: ####
 - Borderlands 2
 - Borderlands: The Pre-Sequel
 - Tiny Tina's Assault on Dragon Keep: A Wonderlands One-shot Adventure
@@ -23,7 +22,8 @@ Then, simply set the project target configuration to ```Release x86``` and build
 ### Installation ###
 
 To use this plugin, build the project or download the [latest available build](https://github.com/Natsu235/BL2ProcessPatcher/releases).
-Then, put the files **BL2ProcessPatcher.asi** and **BL2ProcessPatcher.ini** in: ```Borderlands 2\Binaries\Win32\Plugins``` and edit **BL2ProcessPatcher.ini** as required.
+
+Put the files **BL2ProcessPatcher.asi** and **BL2ProcessPatcher.ini** in: ```Borderlands 2\Binaries\Win32\Plugins``` and configure **BL2ProcessPatcher.ini** as required.
 
 ### Licence ###
 
