@@ -21,9 +21,11 @@ Then, simply set the project target configuration to ```Release x86``` and build
 
 ### Installation ###
 
-To use this plugin, build the project or download the [latest available build](https://github.com/Natsu235/BL2ProcessPatcher/releases).
+To use this plugin, first build the project or download the [latest available build](https://github.com/Natsu235/BL2ProcessPatcher/releases).
 
-Put the files **BL2ProcessPatcher.asi** and **BL2ProcessPatcher.ini** in: ```Borderlands 2\Binaries\Win32\Plugins``` and configure **BL2ProcessPatcher.ini** as required.
+Then, put the files **BL2ProcessPatcher.asi** and **BL2ProcessPatcher.ini** in ```Borderlands 2\Binaries\Win32\Plugins``` and configure **BL2ProcessPatcher.ini** as you need.
+
+> An ASI plugin loader such as [Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader) is required.
 
 ### Licence ###
 
