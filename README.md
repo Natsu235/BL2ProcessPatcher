@@ -1,6 +1,6 @@
 # BL2ProcessPatcher
 
-An ASI plugin for *Borderlands 2* used to patch various things at game launch, such as disabling checksum verification performed on generic packages (e.g. ```Startup.upk```, ```Willowgame.upk```), recalculating DLCs hashes or simply enabing the in-game console commands.
+An ASI plugin for *Borderlands 2* used to patch various things at game launch, such as disabling checksum verification performed on generic packages (e.g. ```Startup.upk```, ```Willowgame.upk```), recalculating DLCs hashes or simply enabling the in-game console commands.
 
 #### Compatible games: ####
 - Borderlands 2
