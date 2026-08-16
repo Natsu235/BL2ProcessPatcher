@@ -1,74 +1,63 @@
 #include "include/pch.h"
 #include "include/util.h"
-#include <wolfssl/openssl/md5.h>
-#include <wolfssl/openssl/sha.h>
-#include <wolfssl/openssl/evp.h>
-#include <Windows.h>
-#include <iostream>
-#include <iomanip>
-#include <fstream>
-#include <sstream>
-#include <vector>
+#include "include/memory.h"
 
-#pragma comment(lib, "crypt32")
-#pragma comment(lib, "ws2_32.lib")
+MODULEINFO mInfo = { 0 };
 
-template<typename T>
-std::string ConvertToHex(const T& binaryResult)
+LPSTR GetProcessFileName()
 {
-    std::ostringstream ss;
-    ss << std::uppercase << std::hex << std::setfill('0');
-    for (unsigned int i = 0; i < binaryResult.size(); ++i) {
-        ss << std::setw(2) << static_cast<unsigned>(binaryResult.at(i));
-    }
-    return ss.str();
+	static char szExePath[2048];
+	GetModuleFileName(NULL, szExePath, 2048);
+
+	return PathFindFileNameA(szExePath);
 }
 
-std::string ParseStringToHex(std::string hexString)
+MODULEINFO GetModuleInfo(char* szModule)
 {
-    std::ostringstream ss;
-    ss << hexString[0];
-    for (unsigned int i = 2; i < hexString.size(); i++) {
-        ss << '\\x' << hexString[i];
-    }
-    return ss.str();
+	MODULEINFO moduleInfo = { 0 };
+	HMODULE hModule = GetModuleHandle(szModule);
+
+	if (hModule == 0)
+	{
+		return moduleInfo;
+	}
+
+	GetModuleInformation(GetCurrentProcess(), hModule, &moduleInfo, sizeof(MODULEINFO));
+	return moduleInfo;
 }
 
-std::string GenerateHash(const std::string& filename, const WOLFSSL_EVP_MD* algorithm, std::size_t size)
+bool InitializeModule(char* module)
 {
-    std::ifstream file(filename, std::ios::binary);
-    if (!file) {
-        return std::string();
-    }
+	mInfo = GetModuleInfo(module);
+	baseAddress = (DWORD)mInfo.lpBaseOfDll;
+	chunkSize = (DWORD)mInfo.SizeOfImage;
 
-    WOLFSSL_EVP_MD_CTX* mdctx = wolfSSL_EVP_MD_CTX_new();
-    wolfSSL_EVP_DigestInit(mdctx, algorithm);
-
-    const size_t bufferSize = 4096;
-    char buffer[bufferSize];
-    while (!file.eof()) {
-        file.read(buffer, bufferSize);
-        wolfSSL_EVP_DigestUpdate(mdctx, buffer, file.gcount());
-    }
-    file.close();
-
-    std::vector<uint8_t> result;
-    result.resize(size);
-    wolfSSL_EVP_DigestFinal_ex(mdctx, result.data(), nullptr);
-
-    wolfSSL_EVP_MD_CTX_free(mdctx);
-
-    return std::string(std::begin(result), std::end(result));
+	return (baseAddress != 0);
 }
 
-// Calculate the MD5 Hash of a given file
-std::string CalculateMD5(const std::string& filename)
+// Returns the absolute path to the folder containing this DLL (e.g. ".../Plugins")
+std::string GetPluginDirectory()
 {
-    return GenerateHash(filename, wolfSSL_EVP_md5(), 16);
+    char path[MAX_PATH];
+    HMODULE hModule = NULL;
+
+    // GetModuleHandleEx with this flag reliably gets the handle of the DLL
+    // containing this very function, regardless of what CWD the host process has.
+    GetModuleHandleExA(
+        GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
+        (LPCSTR)&GetPluginDirectory,
+        &hModule);
+
+    GetModuleFileNameA(hModule, path, MAX_PATH);
+
+    std::string fullPath(path);
+    size_t lastSlash = fullPath.find_last_of("\\/");
+    return (lastSlash != std::string::npos) ? fullPath.substr(0, lastSlash) : fullPath;
 }
 
-// Calculate the SHA-1 Hash of a given file
-std::string CalculateSHA1(const std::string& filename)
+void FirstUpperCase(std::string& str)
 {
-    return GenerateHash(filename, wolfSSL_EVP_sha1(), 20);
+    if (!str.empty()) {
+        str[0] = toupper(str[0]);
+    }
 }

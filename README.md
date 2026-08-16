@@ -3,15 +3,20 @@
 An ASI plugin for *Borderlands 2* used to patch various things at game launch, such as disabling checksum verification performed on generic packages (Startup.upk, Willowgame.upk) or simply re-enabing the in-game console command.
 Using this, you can for example bypass the executable protection of the *Assault on Dragon Keep* standalone on Steam to grants yourself developer perks by editing the WillowGame.upk package.
 
+Compatible games:
+- Borderlands 2
+- Borderlands: The Pre-Sequel
+- Tiny Tina's Assault on Dragon Keep: A Wonderlands One-shot Adventure
+
 ### How to build ###
 
 To build this project using **Visual Studio 2022**, you need to install the [wolfSSL library](https://github.com/wolfSSL/wolfssl) and set the project properties as follow:
 
-* Configuration Properties > Advanced > Character Set: ```Not Set```
-* C/C++ > General > Additional Include Directories > ```X:\wolfssl\5.7.0``` (replace 'X' with your drive letter)
-* C/C++ > Precompiled Headers > Precompiled Header File > ```include/pch.h```
-* Linker > General > Additional Library Directories > ```X:\wolfssl\5.7.0\Release\Win32``` (replace 'X' with your drive letter)
-* Linker > Input > Additional Dependencies > ```Shlwapi.lib;sslSniffer.lib;wolfssl.lib```
+* Configuration Properties ➜ Advanced ➜ Character Set: ```Not Set```
+* C/C++ ➜ General ➜ Additional Include Directories ➜ ```X:\wolfssl\5.9.2``` (replace 'X' with your drive letter)
+* C/C++ ➜ Precompiled Headers ➜ Precompiled Header File ➜ ```include/pch.h```
+* Linker ➜ General ➜ Additional Library Directories ➜ ```X:\wolfssl\5.9.2\Release\Win32``` (replace 'X' with your drive letter)
+* Linker ➜ Input ➜ Additional Dependencies ➜ ```Shlwapi.lib;sslSniffer.lib;wolfssl.lib```
 
 Then, simply set the project target configuration to ```Release x86``` and build the solution.
 

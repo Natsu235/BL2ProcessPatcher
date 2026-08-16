@@ -2,16 +2,33 @@
 #ifndef MEMORY_H
 #define MEMORY_H
 
-#include <iostream>
-#include <Windows.h>
-#include <tlhelp32.h>
-#include <Psapi.h>
-#include <Shlwapi.h>
+#include <string>
+#include <vector>
 
-LPSTR GetProcessFileName();
-MODULEINFO GetModuleInfo(char* szModule);
-bool InitializeModule(char* module);
-DWORD FindMemoryPattern(char* pattern, char* mask);
-void WriteValueToMemory(uintptr_t addressToWrite, char* valueToWrite, int byteNum);
+extern DWORD baseAddress;
+extern DWORD chunkSize;
 
+#if _DEBUG
+enum class PatchResult { NotFound, AlreadyCorrect, Patched };
+
+struct PatchLogEntry {
+    std::string label;
+    PatchResult result;
+    DWORD address;  // 0 if not found
+};
+
+extern std::vector<PatchLogEntry> patchLog;
+
+void ShowPatchDebugReport();
 #endif
+
+DWORD PatchAOB(
+    const char* pattern,
+    const char* mask,
+    const char* valueToWrite,
+    int size,
+    int offset,
+    const char* label,
+    DWORD startAddress = baseAddress);
+
+#endif // MEMORY_H

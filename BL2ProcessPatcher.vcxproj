@@ -82,15 +82,19 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>include/pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>D:\wolfssl\5.7.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\wolfssl\5.9.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>D:\wolfssl\5.7.0\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\wolfssl\5.9.2\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Shlwapi.lib;sslSniffer.lib;wolfssl.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>signtool sign /sha1 AD372A6C381DFA2C40AF594EA91401A718D622BC /fd SHA256 /t http://timestamp.digicert.com "$(TargetPath)"</Command>
+      <Message>Signature with certificate</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -102,7 +106,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>include/pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>D:\wolfssl\5.7.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\wolfssl\5.9.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -111,8 +115,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalDependencies>Shlwapi.lib;sslSniffer.lib;wolfssl.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\wolfssl\5.7.0\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\wolfssl\5.9.2\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>signtool sign /sha1 AD372A6C381DFA2C40AF594EA91401A718D622BC /fd SHA256 /t http://timestamp.digicert.com "$(TargetPath)"</Command>
+      <Message>Signature with certificate</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -122,15 +130,19 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>include/pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>D:\wolfssl\5.7.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\wolfssl\5.9.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>D:\wolfssl\5.7.0\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\wolfssl\5.9.2\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Shlwapi.lib;sslSniffer.lib;wolfssl.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>signtool sign /sha1 AD372A6C381DFA2C40AF594EA91401A718D622BC /fd SHA256 /t http://timestamp.digicert.com "$(TargetPath)"</Command>
+      <Message>Signature with certificate</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -142,7 +154,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>include/pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>D:\wolfssl\5.7.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\wolfssl\5.9.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -150,24 +162,30 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>D:\wolfssl\5.7.0\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\wolfssl\5.9.2\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Shlwapi.lib;sslSniffer.lib;wolfssl.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>signtool sign /sha1 AD372A6C381DFA2C40AF594EA91401A718D622BC /fd SHA256 /t http://timestamp.digicert.com "$(TargetPath)"</Command>
+      <Message>Signature with certificate</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
-    <ClInclude Include="src/include/framework.h" />
-    <ClInclude Include="src/include/MemorySignature.h" />
-    <ClInclude Include="src/include/signatures.h" />
-    <ClInclude Include="src/include/util.h" />
-    <ClInclude Include="src/include/memory.h" />
-    <ClInclude Include="src/include/pch.h" />
+    <ClInclude Include="src\include\framework.h" />
+    <ClInclude Include="src\include\games.h" />
+    <ClInclude Include="src\include\signatures.h" />
+    <ClInclude Include="src\include\util.h" />
+    <ClInclude Include="src\include\hash.h" />
+    <ClInclude Include="src\include\memory.h" />
+    <ClInclude Include="src\include\pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src/util.cpp" />
-    <ClCompile Include="src/memory.cpp" />
-    <ClCompile Include="src/dllmain.cpp" />
-    <ClCompile Include="src/pch.cpp">
+    <ClCompile Include="src\util.cpp" />
+    <ClCompile Include="src\hash.cpp" />
+    <ClCompile Include="src\memory.cpp" />
+    <ClCompile Include="src\dllmain.cpp" />
+    <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
