@@ -7,7 +7,7 @@
 DWORD baseAddress = 0;
 DWORD chunkSize = 0;
 
-static void ChangeMemory(DWORD baseAddress, int value, DWORD offset1, DWORD offset2, bool msg)
+/*static void ChangeMemory(DWORD baseAddress, int value, DWORD offset1, DWORD offset2, bool msg)
 {
 	DWORD d, ds;
 	DWORD* address = (DWORD*)((*(DWORD*)(baseAddress + offset1)) + offset2);
@@ -22,7 +22,7 @@ static void ChangeMemory(DWORD baseAddress, int value, DWORD offset1, DWORD offs
 	//VirtualProtect((LPVOID)address, sizeof(value), PAGE_EXECUTE_READWRITE, &d);
 	*(int*)address = value;
 	//VirtualProtect((LPVOID)address, sizeof(value), d, &ds);
-}
+}*/
 
 static DWORD FindMemoryPattern(const char* pattern, const char* mask, DWORD startAddress)
 {

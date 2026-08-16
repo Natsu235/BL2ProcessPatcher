@@ -3,34 +3,38 @@
 #include "include/util.h"
 #include <wolfssl/openssl/sha.h>
 #include <wolfssl/openssl/evp.h>
-#include <iomanip>
+//#include <iomanip>
+//#include <sstream>
 #include <fstream>
-#include <sstream>
 #include <vector>
 
 #pragma comment(lib, "crypt32")
 #pragma comment(lib, "ws2_32.lib")
 
-template<typename T>
+/*template<typename T>
 static std::string ConvertToHex(const T& binaryResult)
 {
     std::ostringstream ss;
+
     ss << std::uppercase << std::hex << std::setfill('0');
     for (unsigned int i = 0; i < binaryResult.size(); ++i) {
         ss << std::setw(2) << static_cast<unsigned>(binaryResult.at(i));
     }
+
     return ss.str();
 }
 
 static std::string ParseStringToHex(std::string hexString)
 {
     std::ostringstream ss;
+
     ss << hexString[0];
     for (unsigned int i = 2; i < hexString.size(); i++) {
         ss << '\\x' << hexString[i];
     }
+
     return ss.str();
-}
+}*/
 
 static std::string GenerateHash(const std::string& fileName, const WOLFSSL_EVP_MD* algorithm, std::size_t size)
 {

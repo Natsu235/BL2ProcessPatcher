@@ -1,8 +1,8 @@
 #pragma once
 
+#include "pch.h"
 #include <string>
 #include <vector>
-#include <utility>
 
 extern LPSTR currentProcessName;
 extern std::string currentGameAlias;
